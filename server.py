@@ -7,6 +7,8 @@ import requests
 import os
 from dotenv import load_dotenv
 
+# ================= SETUP =================
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -19,6 +21,12 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
 API_KEY = os.getenv("OPENAI_API_KEY")
+
+# ================= HOME ROUTE (FIXED) =================
+
+@app.route("/")
+def home():
+    return "ShramitAI Backend is Running 🚀"
 
 # ================= MODELS =================
 
@@ -77,7 +85,7 @@ def logout():
     logout_user()
     return jsonify({"msg": "logged out"})
 
-# ================= CHAT (WITH GUEST SUPPORT) =================
+# ================= CHAT (GUEST + USER) =================
 
 @app.route("/chat", methods=["POST"])
 def chat():
@@ -106,9 +114,13 @@ def chat():
 
         reply = data["choices"][0]["message"]["content"]
 
-        # Save ONLY if logged in
+        # Save only if logged in
         if current_user.is_authenticated:
-            chat = Chat(user_id=current_user.id, message=user_message, reply=reply)
+            chat = Chat(
+                user_id=current_user.id,
+                message=user_message,
+                reply=reply
+            )
             db.session.add(chat)
             db.session.commit()
 
@@ -128,9 +140,6 @@ def history():
         {"msg": c.message, "reply": c.reply}
         for c in chats
     ])
-@app.route("/")
-def home():
-    return "ShramitAI Backend is Running 🚀"
 
 # ================= RUN =================
 
@@ -138,7 +147,4 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
 
-   if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
     app.run(host="0.0.0.0", port=10000)
