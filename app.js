@@ -23,7 +23,7 @@ async function sendMessage() {
 
     addMessage("...", "bot");
 
-    const res = await fetch("http://127.0.0.1:5000/chat", {
+    const res = await fetch("https://shramitai.onrender.com/chat", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         credentials: "include",
@@ -41,7 +41,7 @@ async function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const res = await fetch("http://127.0.0.1:5000/login", {
+    const res = await fetch("https://shramitai.onrender.com/login", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         credentials: "include",
@@ -63,7 +63,7 @@ async function register() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    await fetch("http://127.0.0.1:5000/register", {
+    await fetch("https://shramitai.onrender.com/register", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         credentials: "include",
@@ -80,7 +80,7 @@ function skipLogin() {
 
 // Load history
 async function loadHistory() {
-    const res = await fetch("http://127.0.0.1:5000/history", {
+    const res = await fetch("https://shramitai.onrender.com/history", {
         credentials: "include"
     });
 
