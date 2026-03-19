@@ -1,0 +1,124 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #0d0d0d;
+    color: white;
+    height: 100vh;
+}
+
+/* APP LAYOUT */
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* HEADER */
+.header {
+    padding: 16px 20px;
+    border-bottom: 1px solid #1f1f1f;
+    background: #0d0d0d;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* CHAT AREA */
+.chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* MESSAGE */
+.msg {
+    max-width: 65%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 14px;
+    animation: fadeIn 0.2s ease-in;
+}
+
+/* USER MESSAGE */
+.user {
+    align-self: flex-end;
+    background: white;
+    color: black;
+}
+
+/* BOT MESSAGE */
+.bot {
+    align-self: flex-start;
+    background: #1e1e1e;
+}
+
+/* INPUT CONTAINER */
+.input-container {
+    display: flex;
+    padding: 14px;
+    border-top: 1px solid #1f1f1f;
+    background: #0d0d0d;
+}
+
+/* INPUT FIELD */
+.input-container input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #1a1a1a;
+    color: white;
+    font-size: 14px;
+}
+
+/* SEND BUTTON */
+.input-container button {
+    margin-left: 10px;
+    padding: 0 18px;
+    border-radius: 10px;
+    border: none;
+    background: white;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.input-container button:hover {
+    background: #e6e6e6;
+}
+
+/* SCROLLBAR */
+.chat::-webkit-scrollbar {
+    width: 6px;
+}
+.chat::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
